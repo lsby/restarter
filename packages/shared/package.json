@@ -1,0 +1,12 @@
+{
+  "name": "shared",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@8.6.9",
+  "dependencies": {
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}

@@ -5,8 +5,22 @@ import { defineConfig } from "vite"
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: {
-      "@/": `${path.resolve(__dirname, "src")}/`,
+    alias: [
+      {
+        find: "@/",
+        replacement: `${path.resolve(__dirname, "src")}/`,
+      },
+      {
+        find: /^shared(.*)/,
+        replacement: path.resolve(__dirname, "../shared/src") + "$1",
+      },
+    ],
+  },
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:3000",
+      },
     },
   },
 })
