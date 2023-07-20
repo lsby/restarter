@@ -1,21 +1,15 @@
 import { z } from "zod"
 import { prefix, routesWithoutPrefix } from ".."
 
-export function genFullOutType<
-  A extends z.AnyZodObject,
-  B extends readonly [string, ...string[]] | readonly [],
->(data: A, errEnum: B) {
-  return z
-    .object({
-      err: z.enum([...errEnum, "unknown error"]),
-    })
-    .or(
-      z.object({
-        err: z.null(),
-        data: data,
-      }),
-    )
-}
+export type OutputType<T, Err extends readonly string[]> =
+  | {
+      err: ArrayToUnion<Err> | "unknown error"
+      data: null
+    }
+  | {
+      err: null
+      data: T
+    }
 
 type Prefix = typeof prefix
 
@@ -23,7 +17,6 @@ type RouteItem = {
   readonly path: string
   input: z.AnyZodObject
   data: z.AnyZodObject
-  output: ReturnType<typeof genFullOutType>
   errCode: readonly string[]
 }
 
@@ -32,7 +25,6 @@ type AddPrefix<T, P extends string = ""> = T extends RouteItem
       path: `${P}${T["path"]}`
       input: T["input"]
       data: T["data"]
-      output: T["output"]
       errCode: T["errCode"]
     }
   : never
@@ -49,7 +41,6 @@ type Helper<T> = T extends RouteItem
       {
         input: z.infer<T["input"]>
         data: z.infer<T["data"]>
-        output: z.infer<T["output"]>
         errCode: T["errCode"]
       }
     >

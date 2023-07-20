@@ -1,5 +1,4 @@
 import { z } from "zod"
-import { genFullOutType } from "../utils"
 
 export const path = "/login" as const
 
@@ -14,5 +13,3 @@ export const data = z.object({
 })
 
 export const errCode = ["wrong-password", "user-not-found"] as const
-
-export const output = genFullOutType(data, errCode)

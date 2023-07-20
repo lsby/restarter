@@ -1,5 +1,4 @@
 import { z } from "zod"
-import { genFullOutType } from "../utils"
 
 export const path = "/add" as const
 
@@ -13,5 +12,3 @@ export const data = z.object({
 })
 
 export const errCode = [] as const
-
-export const output = genFullOutType(data, errCode)

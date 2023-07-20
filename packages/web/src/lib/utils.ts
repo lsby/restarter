@@ -1,4 +1,5 @@
 import { clsx, type ClassValue } from "clsx"
+import type { OutputType } from "shared/utils"
 import { routes, type Route } from "shared/utils"
 import { twMerge } from "tailwind-merge"
 
@@ -25,7 +26,11 @@ export function fetcher<A extends keyof Route>(
     const parseResult = route.input.safeParse(input)
     if (!parseResult.success) throw new Error(parseResult.error.message)
 
-    const data = (await res.json()) as Route[A]["output"]
+    const data = (await res.json()) as OutputType<
+      Route[A]["data"],
+      Route[A]["errCode"]
+    >
+
     if (data.err) {
       throw new Error(data.err)
     }
