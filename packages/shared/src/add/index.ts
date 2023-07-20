@@ -1,7 +1,7 @@
 import { z } from "zod"
 import { genFullOutType } from "../utils"
 
-export const path = "/api/add" as const
+export const path = "/add" as const
 
 export const input = z.object({
   a: z.number(),

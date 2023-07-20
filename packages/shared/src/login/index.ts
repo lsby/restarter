@@ -1,7 +1,7 @@
 import { z } from "zod"
 import { genFullOutType } from "../utils"
 
-export const path = "/api/login" as const
+export const path = "/login" as const
 
 export const input = z.object({
   username: z.string(),

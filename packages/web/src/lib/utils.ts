@@ -1,5 +1,5 @@
 import { clsx, type ClassValue } from "clsx"
-import { routes, type Route } from "shared"
+import { routes, type Route } from "shared/utils"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
