@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "format": "prettier . --write",
-    "lint": "DEBUG=eslint:cli-engine eslint --fix ."
+    "lint": "DEBUG=eslint:cli-engine eslint --fix .",
+    "ts:watch": "npx tsc -w"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.1",

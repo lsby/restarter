@@ -3,6 +3,9 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@8.6.9",
+  "scripts": {
+    "ts:watch": "npx tsc -w"
+  },
   "dependencies": {
     "zod": "^3.21.4"
   },

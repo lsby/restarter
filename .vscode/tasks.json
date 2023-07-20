@@ -1,0 +1,55 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "shared类型检查",
+      "type": "npm",
+      "script": "ts:watch",
+      "path": "packages/shared",
+      "problemMatcher": "$tsc-watch",
+      "isBackground": true,
+      "presentation": { "reveal": "never" },
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "service类型检查",
+      "type": "npm",
+      "script": "ts:watch",
+      "path": "packages/service",
+      "problemMatcher": "$tsc-watch",
+      "isBackground": true,
+      "presentation": { "reveal": "never" },
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "web类型检查",
+      "type": "npm",
+      "script": "ts:watch",
+      "path": "packages/web",
+      "problemMatcher": "$tsc-watch",
+      "isBackground": true,
+      "presentation": { "reveal": "never" },
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "service运行",
+      "type": "npm",
+      "script": "dev",
+      "path": "packages/service",
+      "isBackground": true,
+      "presentation": { "reveal": "never" },
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "开发",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "shared类型检查",
+        "service类型检查",
+        "web类型检查",
+        "service运行"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

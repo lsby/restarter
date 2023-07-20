@@ -12,7 +12,8 @@
     "db:push:dev": "npx dotenv -e ./.env/development.env -- npx prisma migrate dev && npx prisma generate --schema=./prisma/schema.prisma",
     "db:push:prod": "npx dotenv -e ./.env/production.env -- npx prisma migrate dev && npx prisma generate --schema=./prisma/schema.prisma",
     "=============": "",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "ts:watch": "npx tsc -w"
   },
   "dependencies": {
     "@prisma/client": "^4.16.2",
