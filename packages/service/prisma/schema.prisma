@@ -1,0 +1,24 @@
+generator kysely {
+    provider = "prisma-kysely"
+    output   = "../types"
+    fileName = "DataBase.ts"
+}
+
+datasource db {
+    provider          = "mysql"
+    shadowDatabaseUrl = env("DB_SHADOW_URL")
+    url               = env("DB_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+// 用户
+model user {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+
+    name String @unique // 用户名
+    pwd  String // 密码
+}

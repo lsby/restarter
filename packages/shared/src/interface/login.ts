@@ -12,4 +12,4 @@ export const data = z.object({
   token: z.string(),
 })
 
-export const errCode = ["wrong-password", "user-not-found"] as const
+export const errCode = ["WRONG_PASSWORD", "USER_NOT_FOUND"] as const

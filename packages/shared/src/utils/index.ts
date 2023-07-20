@@ -1,9 +1,11 @@
 import { z } from "zod"
 import { routesWithoutPrefix } from ".."
 
+export const unknownError = "UNKNOWN_ERROR" as const
+
 export type OutputType<T, Err extends readonly string[]> =
   | {
-      err: ArrayToUnion<Err> | "unknown error"
+      err: ArrayToUnion<Err> | typeof unknownError
       data: null
     }
   | {
