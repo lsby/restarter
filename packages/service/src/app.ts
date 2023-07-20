@@ -7,7 +7,19 @@ import { 创建http服务器, 运行http服务器 } from "./http/http服务器"
 import { 创建常用解析器组 } from "./middleware/创建常用解析器组"
 import { getEnv } from "./util/env"
 
-export async function runApp() {
+const value: unique symbol = Symbol("value")
+
+export type App = {
+  [value]: {}
+}
+
+export function mkApp(): App {
+  return {
+    [value]: {},
+  }
+}
+
+export async function runApp(_app: App) {
   var env = getEnv()
   var 共享包索引 = shared.routes
     .map((a) => ({ [a.path]: { ...a } }))

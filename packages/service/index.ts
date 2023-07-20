@@ -1,3 +1,3 @@
-import { runApp } from "@/app"
+import { mkApp, runApp } from "@/app"
 
-runApp()
+runApp(mkApp())
