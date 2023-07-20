@@ -32,15 +32,6 @@
       "group": { "kind": "build", "isDefault": true }
     },
     {
-      "label": "service运行",
-      "type": "npm",
-      "script": "dev",
-      "path": "packages/service",
-      "isBackground": true,
-      "presentation": { "reveal": "never" },
-      "group": { "kind": "build", "isDefault": true }
-    },
-    {
       "label": "shared的index生成",
       "type": "npm",
       "script": "gen:index",
@@ -65,14 +56,33 @@
       "group": { "kind": "build", "isDefault": true }
     },
     {
+      "label": "service运行",
+      "type": "npm",
+      "script": "dev",
+      "path": "packages/service",
+      "isBackground": true,
+      "presentation": { "reveal": "never" },
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "web运行",
+      "type": "npm",
+      "script": "preview",
+      "path": "packages/web",
+      "isBackground": true,
+      "presentation": { "reveal": "never" },
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
       "label": "开发",
-      "dependsOrder": "sequence",
+      "dependsOrder": "parallel",
       "dependsOn": [
         "shared类型检查",
         "service类型检查",
         "web类型检查",
         "shared的index生成",
-        "service运行"
+        "service运行",
+        "web运行"
       ],
       "problemMatcher": []
     }
