@@ -4,12 +4,16 @@
   "type": "module",
   "packageManager": "pnpm@8.6.9",
   "scripts": {
-    "ts:watch": "npx tsc -w"
+    "ts:watch": "npx tsc -w",
+    "gen:index": "npx onchange -i src/interface/**/*.ts -e src/interface/**/index.ts -- \"npx tsx ./src/script/genIndex.ts\""
   },
   "dependencies": {
+    "@types/node": "^20.4.2",
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "onchange": "^7.1.0",
+    "tsx": "^3.12.7",
     "typescript": "^5.1.6"
   }
 }

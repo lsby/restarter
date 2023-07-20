@@ -41,12 +41,37 @@
       "group": { "kind": "build", "isDefault": true }
     },
     {
+      "label": "shared的index生成",
+      "type": "npm",
+      "script": "gen:index",
+      "path": "packages/shared",
+      "problemMatcher": [
+        {
+          "pattern": {
+            "kind": "file",
+            "regexp": "(错误: .*)",
+            "file": 1,
+            "message": 1
+          },
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "^========生成开始========$",
+            "endsPattern": "^========生成结束========$"
+          }
+        }
+      ],
+      "isBackground": true,
+      "presentation": { "reveal": "never" },
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
       "label": "开发",
       "dependsOrder": "sequence",
       "dependsOn": [
         "shared类型检查",
         "service类型检查",
         "web类型检查",
+        "shared的index生成",
         "service运行"
       ],
       "problemMatcher": []

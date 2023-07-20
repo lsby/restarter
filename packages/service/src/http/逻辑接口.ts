@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response, Router } from "express"
-import { unknownError } from "shared/utils/index"
+import { unknownError } from "shared"
 import util from "util"
 import * as uuid from "uuid"
 import { ZodType, z } from "zod"

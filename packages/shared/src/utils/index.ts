@@ -1,19 +1,27 @@
 import { z } from "zod"
-import { routesWithoutPrefix } from ".."
 
-export const unknownError = "UNKNOWN_ERROR" as const
+export type 取对象值们<
+  obj,
+  剩余的键 extends any[] = 联合转元组<keyof obj>,
+> = 剩余的键 extends []
+  ? []
+  : 剩余的键 extends [infer a, ...infer as]
+  ? a extends keyof obj
+    ? [obj[a], ...取对象值们<obj, as>]
+    : never
+  : never
 
-export type OutputType<T, Err extends readonly string[]> =
-  | {
-      err: ArrayToUnion<Err> | typeof unknownError
-      data: null
-    }
-  | {
-      err: null
-      data: T
-    }
+// https://github.com/type-challenges/type-challenges/issues/2835
+type LastUnion<T> = UnionToIntersection<
+  T extends any ? (x: T) => any : never
+> extends (x: infer L) => any
+  ? L
+  : never
+type 联合转元组<T, Last = LastUnion<T>> = [T] extends [never]
+  ? []
+  : [...联合转元组<Exclude<T, Last>>, Last]
 
-const prefix = "/api"
+export const prefix = "/api"
 type Prefix = typeof prefix
 
 type RouteItem = {
@@ -32,7 +40,7 @@ type AddPrefix<T, P extends string = ""> = T extends RouteItem
     }
   : never
 
-type AddPrefixForArray<Arr> = Arr extends readonly []
+export type AddPrefixForArray<Arr> = Arr extends readonly []
   ? []
   : Arr extends readonly [infer A, ...infer B]
   ? [AddPrefix<A, Prefix>, ...AddPrefixForArray<B>]
@@ -49,23 +57,12 @@ type Helper<T> = T extends RouteItem
     >
   : never
 
-type DistributedHelper<T> = T extends RouteItem ? Helper<T> : never
+export type DistributedHelper<T> = T extends RouteItem ? Helper<T> : never
 
-type ArrayToUnion<T extends readonly any[]> = T[number]
+export type ArrayToUnion<T extends readonly any[]> = T[number]
 
-type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
-  k: infer I,
-) => void
+export type UnionToIntersection<U> = (
+  U extends any ? (k: U) => void : never
+) extends (k: infer I) => void
   ? I
   : never
-
-export const routes = routesWithoutPrefix.map((r) => {
-  return {
-    ...r,
-    path: `${prefix}${r.path}`,
-  }
-}) as unknown as AddPrefixForArray<typeof routesWithoutPrefix>
-
-export type Route = UnionToIntersection<
-  DistributedHelper<ArrayToUnion<typeof routes>>
->
