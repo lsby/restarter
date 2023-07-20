@@ -1,0 +1,12 @@
+{
+  "common": {
+    "title": "品牌数据智能分析平台"
+  },
+  "auth": {
+    "login": "登录",
+    "register": "注册",
+    "input-account": "请输入帐号",
+    "input-password": "请输入密码",
+    "remember-password": "记住帐号密码"
+  }
+}

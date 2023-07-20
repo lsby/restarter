@@ -1,0 +1,12 @@
+{
+  "common": {
+    "title": "Brand data intelligent analysis platform"
+  },
+  "auth": {
+    "login": "Login",
+    "input-account": "please enter your account",
+    "input-password": "please enter your password",
+    "register": "Register",
+    "remember-password": "Remember account and password"
+  }
+}

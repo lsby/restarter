@@ -1,0 +1,30 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
+  },
+  "eslint.workingDirectories": ["./packages/web"],
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "tailwindCSS.experimental.classRegex": [
+    "cva\\(([^)]*)\\)",
+    "[\"'`]([^\"'`]*).*?[\"'`]"
+  ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "i18n-ally.disabled": false,
+  "i18n-ally.localesPaths": ["packages/web/src/locales"],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.sourceLanguage": "zh",
+  "cSpell.words": [
+    "classname",
+    "clsx",
+    "iconify",
+    "lucide",
+    "restarter",
+    "sonner",
+    "tailwindcss"
+  ]
+}

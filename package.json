@@ -1,0 +1,15 @@
+{
+  "name": "restarter",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@8.6.9",
+  "scripts": {
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  },
+  "prettier": {
+    "semi": false
+  }
+}

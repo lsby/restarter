@@ -1,0 +1,5 @@
+*.*
+!*.tsx
+!*.ts
+vite.config.ts
+src/components/ui
