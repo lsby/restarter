@@ -11,4 +11,4 @@ export const data = z.object({
   result: z.number(),
 })
 
-export const errCode = [] as const
+export const errCode = ["没有登录"] as const

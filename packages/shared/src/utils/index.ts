@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { prefix, routesWithoutPrefix } from ".."
+import { routesWithoutPrefix } from ".."
 
 export type OutputType<T, Err extends readonly string[]> =
   | {
@@ -11,6 +11,7 @@ export type OutputType<T, Err extends readonly string[]> =
       data: T
     }
 
+const prefix = "/api"
 type Prefix = typeof prefix
 
 type RouteItem = {

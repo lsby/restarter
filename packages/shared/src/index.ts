@@ -1,7 +1,4 @@
-// TODO: add more routes
-import * as addRoute from "./add"
-import * as loginRoute from "./login"
+import * as addRoute from "./interface/add"
+import * as loginRoute from "./interface/login"
 
 export const routesWithoutPrefix = [addRoute, loginRoute] as const
-
-export const prefix = "/api" as const
